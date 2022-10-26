@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from 'react-icons/ai'
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
@@ -11,6 +11,8 @@ const Login = () => {
     const [user, setUser] = useState(null);
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -23,12 +25,11 @@ const Login = () => {
         logIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
                 setUser(user);
                 setError('');
                 form.reset();
                 if (user.emailVerified) {
-                    navigate('/')
+                    navigate(from, { replace: true });
                 }
                 else {
                     toast('Your email is not verified. Please verify')
@@ -36,12 +37,11 @@ const Login = () => {
             })
             .catch(error => {
                 console.error(error);
-                setError(error.message)
+                setError(error.message);
             })
-            .finally(
-                setLoading(false)
-            )
-
+            .finally(() => {
+                setLoading(false);
+            })
     }
 
     const handleGoogleLogIn = () => {
@@ -49,8 +49,13 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                setUser(user);
+                navigate(from, { replace: true });
             })
             .catch(error => console.error(error))
+            .finally(
+                setLoading(false)
+            )
     }
 
     const handleGitHubLogIn = () => {
@@ -58,8 +63,13 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                setUser(user);
+                navigate('/')
             })
             .catch(error => console.error(error))
+            .finally(
+                setLoading(false)
+            )
     }
 
     return (

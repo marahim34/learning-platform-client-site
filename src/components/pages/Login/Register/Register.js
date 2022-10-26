@@ -12,9 +12,8 @@ const Register = ({ children }) => {
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
-        const first = form.first.value;
-        const last = form.last.value;
-        const name = first + ' ' + last;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
         const confirm = form.confirm.value;
@@ -40,10 +39,9 @@ const Register = ({ children }) => {
                 const user = result.user;
                 setUser(user);
                 form.reset();
-                handleUpdateUserProfile(name)
+                handleUpdateUserProfile(name, photoURL)
                 handleEmailVerification();
                 toast('Please verify your email and continue the registration process.')
-
             })
             .catch(error => console.error(error))
             .finally(() => {
@@ -56,9 +54,10 @@ const Register = ({ children }) => {
                 .catch(error => console.error(error))
         }
 
-        const handleUpdateUserProfile = (name) => {
+        const handleUpdateUserProfile = (name, photoURL) => {
             const profile = {
                 displayName: name,
+                photoURL: photoURL,
             }
             updateUserProfile(profile)
                 .then(() => { })
@@ -77,15 +76,15 @@ const Register = ({ children }) => {
                     <form onSubmit={handleRegister} className="card-body">
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">First Name</span>
+                                <span className="label-text">Full Name</span>
                             </label>
-                            <input type="text" placeholder="First Name" name='first' className="input input-bordered" />
+                            <input type="text" placeholder="Your Full Name" name='name' className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Last Name</span>
+                                <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" placeholder="Last Name" name='last' className="input input-bordered" />
+                            <input type="text" placeholder="Photo URL" name='photoURL' className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">

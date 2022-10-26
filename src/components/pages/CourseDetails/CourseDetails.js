@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { GoCalendar } from 'react-icons/go'
 import { FaCertificate, FaRegClock, FaLanguage, FaStar } from 'react-icons/fa'
 import { HiStatusOnline } from 'react-icons/hi'
@@ -7,7 +7,7 @@ import { GiNetworkBars } from 'react-icons/gi'
 
 const CourseDetails = () => {
     const coursePage = useLoaderData();
-    const { institution, title, skills, rating, reviews, applicable_for, certification, duration, price, about } = coursePage;
+    const { id, institution, title, skills, rating, reviews, applicable_for, certification, duration, price, about } = coursePage;
     return (
         <div>
             <div className="hero min-h-screen bg-base-400">
@@ -50,7 +50,9 @@ const CourseDetails = () => {
                                 <div>
                                     <h4 className='text-2xl'>Start Learning Today</h4>
                                     <p>Free Enrollment</p>
-                                    <button className="btn btn-primary">Get Started</button>
+                                    <Link to={`/checkout/${id}`} >
+                                        <button id={id} className="btn btn-primary">Get Premium Access</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
