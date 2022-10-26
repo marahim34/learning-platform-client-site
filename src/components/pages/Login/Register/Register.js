@@ -1,7 +1,71 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
+import toast from 'react-hot-toast';
 
-const Register = () => {
+const Register = ({ children }) => {
+    const { createUser, verifyEmail, updateUserProfile } = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const [user, setUser] = useState();
+    const navigate = useNavigate();
+
+    const handleRegister = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const first = form.first.value;
+        const last = form.last.value;
+        const name = first + ' ' + last;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirm = form.confirm.value;
+        // console.log(fullName, email, password, confirm);
+
+        if (password.length < 6) {
+            setError('Password length should be at least 6 characters')
+            return
+        }
+        if (!/(?=.*[A-Z])/.test(password)) {
+            setError('Password should include one UPPERCASE and one SPECIAL character.')
+            return;
+        }
+        if (password !== confirm) {
+            setError('Password did not match')
+            return;
+        }
+
+        setError('');
+
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+                form.reset();
+                handleUpdateUserProfile(name)
+                handleEmailVerification();
+                toast('Please verify your email and continue the registration process.')
+
+            })
+            .catch(error => console.error(error))
+            .finally(() => {
+                navigate('/login')
+            })
+
+        const handleEmailVerification = () => {
+            verifyEmail()
+                .then(() => { })
+                .catch(error => console.error(error))
+        }
+
+        const handleUpdateUserProfile = (name) => {
+            const profile = {
+                displayName: name,
+            }
+            updateUserProfile(profile)
+                .then(() => { })
+                .catch(error => console.error(error))
+        }
+    }
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col ">
@@ -10,7 +74,7 @@ const Register = () => {
                     <p className="py-6">Be a PRESTIGIOUS member and get access to a number of premium benefits such as discounts, free courses, exceptional offers and so on and so forth..</p>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form className="card-body">
+                    <form onSubmit={handleRegister} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">First Name</span>
@@ -46,8 +110,7 @@ const Register = () => {
                         </div>
                         <div>
                             <p className="text-red-600">
-
-
+                                {error}
                             </p>
                         </div>
                         <div>
