@@ -7,7 +7,7 @@ import { toast } from 'react-hot-toast';
 
 
 const Login = () => {
-    const { logIn, setLoading, SignInWithGoogle } = useContext(AuthContext);
+    const { logIn, setLoading, signInWithGoogle, signInWithGitHub } = useContext(AuthContext);
     const [user, setUser] = useState(null);
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -45,7 +45,16 @@ const Login = () => {
     }
 
     const handleGoogleLogIn = () => {
-        SignInWithGoogle()
+        signInWithGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+    }
+
+    const handleGitHubLogIn = () => {
+        signInWithGitHub()
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -62,7 +71,7 @@ const Login = () => {
                     <br />
                     <button onClick={handleGoogleLogIn} className="btn btn-primary mb-4"><FcGoogle></FcGoogle> Continue with Google</button>
                     <br />
-                    <button className="btn btn-primary"><AiFillGithub></AiFillGithub> Continue with Github</button>
+                    <button onClick={handleGitHubLogIn} className="btn btn-primary"><AiFillGithub></AiFillGithub> Continue with Github</button>
                     <br />
                     <p className="text-3xl font-bold mt-3">Don't have an account?</p>
                     <p><Link to='/register' className="link link-primary">Register here</Link></p>
