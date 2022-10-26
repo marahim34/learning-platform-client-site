@@ -42,7 +42,7 @@ const Header = () => {
                                 <li><Link to='/login'>Log In</Link></li>
                         } */}
                         <li><button data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">Theme</button></li>
-                        {/* <button data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">Theme</button> */}
+                        <button data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">Theme</button>
                     </ul>
                 </div>
 
