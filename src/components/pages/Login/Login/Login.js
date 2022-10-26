@@ -7,7 +7,7 @@ import { toast } from 'react-hot-toast';
 
 
 const Login = () => {
-    const { logIn, setLoading } = useContext(AuthContext);
+    const { logIn, setLoading, SignInWithGoogle } = useContext(AuthContext);
     const [user, setUser] = useState(null);
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -44,6 +44,15 @@ const Login = () => {
 
     }
 
+    const handleGoogleLogIn = () => {
+        SignInWithGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+    }
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -51,7 +60,7 @@ const Login = () => {
                     <h1 className="text-5xl font-bold">Login now!</h1>
                     <p className="py-6">Please ensure that you use the same email account and password that you used when signing in.</p>
                     <br />
-                    <button className="btn btn-primary mb-4"><FcGoogle></FcGoogle> Continue with Google</button>
+                    <button onClick={handleGoogleLogIn} className="btn btn-primary mb-4"><FcGoogle></FcGoogle> Continue with Google</button>
                     <br />
                     <button className="btn btn-primary"><AiFillGithub></AiFillGithub> Continue with Github</button>
                     <br />
@@ -78,7 +87,7 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
                         </div>
-
+                        <p className="text-red-600">  {error.slice(10, 40)}</p>
 
                     </form>
                 </div>
