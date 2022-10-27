@@ -6,7 +6,7 @@ const Blogs = () => {
             <h3 className='text-center font-semibold text-2xl mt-10'>Welcome to <span className='text-purple-800'>e-Learning Hero!</span> Blog page </h3>
             <h4 className='text-center'>Web designing is brainpower made visible.</h4>
             <div className=' items-start align-top ml-12 md:flex'>
-                <div className="card w-96 bg-base-100 shadow-xl mt-10">
+                <div className="card w-96 bg-base-100 shadow-xl mt-10 mr-3">
                     <div className="card-body">
                         <h2 className="card-title">Cross-Origin Resource Sharing (CORS)</h2>
                         <p>Cross-Origin Resource Sharing (CORS) is an HTTP-header based mechanism that allows a server to indicate any origins (domain, scheme, or port) other than its own from which a browser should permit loading resources. CORS also relies on a mechanism by which browsers make a "preflight" request to the server hosting the cross-origin resource, in order to check that the server will permit the actual request. In that preflight, the browser sends headers that indicate the HTTP method and headers that will be used in the actual request. </p>
@@ -16,7 +16,7 @@ const Blogs = () => {
                         <p>For security reasons, browsers restrict cross-origin HTTP requests initiated from scripts. For example, XMLHttpRequest and the Fetch API follow the same-origin policy. This means that a web application using those APIs can only request resources from the same origin the application was loaded from unless the response from other origins includes the right CORS headers.</p>
                     </div>
                 </div>
-                <div className="card w-96 bg-base-100 shadow-xl mt-10">
+                <div className="card w-96 bg-base-100 shadow-xl mt-10 mr-3">
                     <div className="card-body flex flex-col align-top justify-start items-start">
                         <h2 className="card-title">Why are you using firebase? What other options do you have to implement authentication?</h2>
                         <p> Firebase is a set of hosting services for any type of application. Firebase Authentication allow users to sign in to a web application app using one or more sign-in methods, including email address and password sign-in, and federated identity providers such as Google Sign-in, GitHub Sign-in and Facebook Login. </p>
@@ -32,7 +32,7 @@ const Blogs = () => {
                         <p>Other alternatives are: <strong>Kuzzle, PubNub, Kumulos, Appwrite, NHost</strong> etc. </p>
                     </div>
                 </div>
-                <div className="card w-96 bg-base-100 shadow-xl mt-10">
+                <div className="card w-96 bg-base-100 shadow-xl mt-10 mr-3">
                     <div className="card-body flex flex-col align-top justify-start items-start">
                         <h2 className="card-title">How does the private route work?</h2>
                         <p> Private Routes in React Router (also called Protected Routes) require a user being authorized to visit a route/page. So if a user is not authorized for a specific page, they cannot access it. The most common example is authentication in a React application where a user can only access the protected pages when they are authorized (which means in this case being authenticated). Authorization goes beyond authentication though. For example, a user can also have roles and permissions which give a user access to specific areas of the application. </p>

@@ -33,9 +33,6 @@ const Header = () => {
                         <li><Link to='/courses'>Courses</Link></li>
                         <li><Link to='/faq'>FAQ</Link></li>
                         <li><Link to='/blogs'>Blogs</Link></li>
-                        {/* <li><Link to='/login'>Log In</Link></li> */}
-                        {/* <button data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">Theme</button> */}
-
                         {
                             user?.uid ?
                                 <>
