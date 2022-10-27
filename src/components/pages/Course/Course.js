@@ -10,11 +10,11 @@ const Course = ({ course }) => {
                 <div className="card w-96 bg-base-100 shadow-xl m-4 flex flex-wrap">
                     <figure><img src={photo_URL} height={100} alt="course" /></figure>
                     <div className="card-body">
-                        <div>
+                        <div className='h-12'>
                             <h2 className="card-title">{title}</h2>
                         </div>
-                        <div>
-                            <div>
+                        <div className='h-36'>
+                            <div className='h-12'>
                                 <p className='font-semibold'>Course Implemented by: {institution}</p>
                             </div>
                             <div className='flex'>

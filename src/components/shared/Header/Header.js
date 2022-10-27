@@ -45,7 +45,7 @@ const Header = () => {
                                     <div className="dropdown dropdown-close">
                                         <label tabIndex={0} className="btn">
                                             <img src={user.photoURL} style={{ height: '30px', width: "30px" }}
-                                                className='rounded-full' roundedCircle width={100} alt="" />
+                                                className='rounded-full' width={100} alt="" />
                                         </label>
                                         <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                                             <li><p>{user?.displayName}</p></li>
