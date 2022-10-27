@@ -23,12 +23,12 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses',
-                loader: () => fetch('http://localhost:5000/courses'),
+                loader: () => fetch('https://e-learning-hero-server-marahim34.vercel.app/courses'),
                 element: <Courses></Courses>
             },
             {
                 path: '/courses/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`),
+                loader: ({ params }) => fetch(`https://e-learning-hero-server-marahim34.vercel.app/courses/${params.id}`),
                 element: <CourseDetails></CourseDetails>
             },
             {
@@ -49,12 +49,12 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/sidebar',
-                loader: () => fetch('http://localhost:5000/courses'),
+                loader: () => fetch('https://e-learning-hero-server-marahim34.vercel.app/courses'),
                 element: <CoursesSideBar></CoursesSideBar>
             },
             {
                 path: '/checkout/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/checkout/${params.id}`),
+                loader: ({ params }) => fetch(`https://e-learning-hero-server-marahim34.vercel.app/checkout/${params.id}`),
                 element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
             }
         ]
