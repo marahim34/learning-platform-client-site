@@ -19,6 +19,7 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: '/',
+                loader: () => fetch('https://e-learning-hero-server-marahim34.vercel.app/courses'),
                 element: <Home></Home>
             },
             {
