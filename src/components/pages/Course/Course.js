@@ -3,11 +3,11 @@ import { AiOutlineStar } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 
 const Course = ({ course }) => {
-    const { id, institution, title, skills, rating, reviews, applicable_for, certification, duration, photo_URL } = course;
+    const { id, institution, title, rating, reviews, duration, photo_URL } = course;
     return (
         <div className='grid grid-cols-3'>
             <div>
-                <div className="card w-96 bg-base-100 shadow-xl m-4 flex flex-wrap">
+                <div className="card-normal w-96 bg-base-100 shadow-xl m-4 flex flex-wrap">
                     <figure><img src={photo_URL} height={100} alt="course" /></figure>
                     <div className="card-body">
                         <div className='h-12'>
@@ -26,8 +26,6 @@ const Course = ({ course }) => {
                                 <Link to={`/courses/${id}`} >
                                     <button id={id} className="btn btn-primary">Details</button>
                                 </Link>
-
-
                             </div>
                         </div>
                     </div>

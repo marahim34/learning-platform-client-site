@@ -27,10 +27,9 @@ const CourseDetails = () => {
                     </Pdf>
                 </div>
                 <div ref={ref} className="hero min-h-screen bg-base-400">
-
                     <div className="hero-content flex-col lg:flex-row items-start">
                         <div className='grid grid-cols-3'>
-                            <div className='col-span-2 mr-3'>
+                            <div className='col-span-3 md:col-span-2 mr-3'>
                                 <h1 className="text-5xl font-bold">{title}</h1>
                                 <div className='flex items-center'>
                                     <div className="stats stats-vertical lg:stats-horizontal shadow bg-base-200 mt-5">
@@ -77,7 +76,7 @@ const CourseDetails = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div>
+                            <div className='hidden md:block'>
                                 <div className='flex items-center'>
                                     <div className='mr-3 mb-3 mt-3'>
                                         <GoCalendar className='text-3xl'></GoCalendar>
