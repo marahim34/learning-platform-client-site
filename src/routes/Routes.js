@@ -5,6 +5,7 @@ import CheckOut from '../components/pages/CheckOut/CheckOut';
 import CourseDetails from '../components/pages/CourseDetails/CourseDetails';
 import Courses from '../components/pages/Courses/Courses';
 import CoursesSideBar from '../components/pages/CoursesSideBar/CoursesSideBar';
+import Error from '../components/pages/Error/Error';
 import FAQ from '../components/pages/FAQ/FAQ';
 import Home from '../components/pages/Home/Home';
 import Login from '../components/pages/Login/Login/Login';
@@ -57,6 +58,10 @@ export const routes = createBrowserRouter([
                 path: '/checkout/:id',
                 loader: ({ params }) => fetch(`https://e-learning-hero-server-marahim34.vercel.app/checkout/${params.id}`),
                 element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
+            },
+            {
+                path: '*',
+                element: <Error></Error>
             }
         ]
     }
