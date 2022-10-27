@@ -20,6 +20,7 @@ const CheckOut = ({ children }) => {
         setLoading(true);
         toast(toastMessage)
         navigate('/')
+        setLoading(false)
     }
 
     return (
