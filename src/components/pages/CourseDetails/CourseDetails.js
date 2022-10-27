@@ -15,15 +15,15 @@ const CourseDetails = () => {
     const options = {
         orientation: 'landscape',
         unit: 'in',
-        format: [13, 8]
+        format: [13, 10]
     };
-    const { id, institution, title, skills, rating, reviews, applicable_for, duration, price, about } = coursePage;
+    const { id, institution, title, skills, rating, reviews, photo_URL, applicable_for, duration, price, about } = coursePage;
     return (
         <div>
             <div>
                 <div>
                     <Pdf targetRef={ref} filename={`course details ${title}`} options={options}>
-                        {({ toPdf }) => <button className="btn btn-primary ml-5 mt-3" onClick={toPdf}>Generate Pdf</button>}
+                        {({ toPdf }) => <button className="btn btn-primary ml-5 mt-3" onClick={toPdf}>Generate Your Pdf</button>}
                     </Pdf>
                 </div>
                 <div ref={ref} className="hero min-h-screen bg-base-400">
@@ -32,18 +32,22 @@ const CourseDetails = () => {
                         <div className='grid grid-cols-3'>
                             <div className='col-span-2 mr-3'>
                                 <h1 className="text-5xl font-bold">{title}</h1>
-                                <div className="stats stats-vertical lg:stats-horizontal shadow bg-base-200 mt-5">
+                                <div className='flex items-center'>
+                                    <div className="stats stats-vertical lg:stats-horizontal shadow bg-base-200 mt-5">
+                                        <div className="stat">
+                                            <div className="stat-title ">Rating:</div>
+                                            <div className="stat-value flex items-center text-2xl font-semibold">{rating} <FaStar /></div>
+                                            <div className="stat-desc">↗︎ Since its inception</div>
+                                        </div>
 
-                                    <div className="stat">
-                                        <div className="stat-title ">Rating:</div>
-                                        <div className="stat-value flex items-center text-2xl font-semibold">{rating} <FaStar /></div>
-                                        <div className="stat-desc">↗︎ Since its inception</div>
+                                        <div className="stat">
+                                            <div className="stat-title ">Reviews:</div>
+                                            <div className="stat-value flex items-center text-2xl font-semibold">{reviews}</div>
+                                            <div className="stat-desc">↗︎ Since its inception</div>
+                                        </div>
                                     </div>
-
-                                    <div className="stat">
-                                        <div className="stat-title ">Reviews:</div>
-                                        <div className="stat-value flex items-center text-2xl font-semibold">{reviews}</div>
-                                        <div className="stat-desc">↗︎ Since its inception</div>
+                                    <div className='ml-3'>
+                                        <img className='w-96 h-60 rounded' src={photo_URL} alt="" />
                                     </div>
                                 </div>
 
