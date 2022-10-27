@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
     // get information of the user
     useEffect(() => {
         const unubscribe = onAuthStateChanged(auth, (currentUser) => {
-            if (currentUser === null || currentUser.emailVerified) {
+            if (currentUser === null || currentUser.uid) {
                 setUser(currentUser);
             }
             setLoading(false);

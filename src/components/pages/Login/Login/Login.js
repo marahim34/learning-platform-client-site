@@ -64,13 +64,17 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 setUser(user);
-                navigate('/')
+                navigate(from, { replace: true });
             })
             .catch(error => console.error(error))
+
+
             .finally(
                 setLoading(false)
             )
     }
+
+
 
     return (
         <div className="hero min-h-screen bg-base-200">
